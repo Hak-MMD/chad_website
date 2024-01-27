@@ -71,12 +71,15 @@
     margin-top: 20px;
     transition: background-color 0.3s, color 0.3s; 
     background: black;
+    width: 90%;
+
 }
 
 
 @media screen and (max-width: 768px) {
   .products-container {
     flex-direction: column;
+
   }
 
   .flex2 {
