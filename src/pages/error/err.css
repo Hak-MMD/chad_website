@@ -1,0 +1,39 @@
+.error-page {
+  background-color: #fff; /* Set background color to white */
+  color: #000; /* Set text color to black */
+  font-family: 'Prompt', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.error-container {
+  text-align: center;
+}
+
+.err-h1 {
+  font-size: 8em;
+  margin: 0;
+}
+
+.err-text {
+  font-size: 1.5em;
+}
+
+.err-a {
+  text-decoration: none;
+  color: #000; /* Set link color to black */
+  border: 1px solid #000; /* Set border color to black */
+  padding: 10px 20px;
+  border-radius: 1.5px;
+  display: inline-block;
+  margin-top: 20px;
+  transition: background-color 0.3s, color 0.3s; /* Add color transition */
+}
+
+.err-a:hover {
+  background-color: #000;
+  color: #fff; /* Change text color to white on hover */
+}
