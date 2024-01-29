@@ -7,7 +7,7 @@ function Header() {
   return (
 
     <nav className="navbar">
-      <div className="logo">BetBoost</div>
+      <div className="logo"><Link style={{ color: 'black' }} to='/'>BetBoost</Link></div>
 
       <ul className="nav-links">
 
@@ -17,7 +17,7 @@ function Header() {
         <div className="menu">
 
           <li><Link to="/">Home</Link></li>
-          <li><Link to="/about">About</Link></li>
+          <li><Link to="/about">About Us</Link></li>
           <li><Link to="/subscriptions">Subscriptions</Link></li>
         
 
@@ -33,7 +33,7 @@ function Header() {
             </ul>
 
           </li> */}
-          <li><Link to="/policy">Policy</Link></li>
+          {/* <li><Link to="/policy">Policy</Link></li> */}
         </div>
       </ul>
     </nav>

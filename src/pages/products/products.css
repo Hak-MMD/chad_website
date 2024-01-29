@@ -43,7 +43,6 @@
 #subs-ul {
     padding-inline-start: 7%;
     margin: 20% 0;
-    list-style-type: block;
 }
 #subs-li {
     font-weight: 200;
@@ -73,6 +72,10 @@
     background: black;
     width: 90%;
 
+}
+#subs-btn:hover {
+    background: transparent;
+    color:#000
 }
 
 

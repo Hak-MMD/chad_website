@@ -19,7 +19,7 @@ function Footer() {
 <div class="row">
 <ul>
     <li><Link to="/">Home</Link></li>
-    <li><Link to="/about">About</Link></li>
+    <li><Link to="/about">About Us</Link></li>
     <li><Link to="/subscriptions">Subscriptions</Link></li>
     <li><Link to="/policy">Policy</Link></li>
 </ul>
