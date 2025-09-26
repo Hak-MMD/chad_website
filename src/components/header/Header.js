@@ -1,25 +1,37 @@
-import React, { useState } from 'react';
-import './header.css';
-import { Link} from 'react-router-dom';
+import React, { useState } from "react";
+import "./header.css";
+import { Link } from "react-router-dom";
 
 function Header() {
-
   return (
-
     <nav className="navbar">
-      <div className="logo"><Link style={{ color: 'black' }} to='/'>BetBoost</Link></div>
+      <div className="logo" style={{ display: "flex", alignItems: "center" }}>
+        <img
+          src={require("../../pages/images/icon.png")}
+          alt="logo icon"
+          style={{ width: "83px", objectFit: "contain" }}
+        />
+        <Link style={{ color: "black" }} to="/">
+          ChadAI
+        </Link>
+      </div>
 
       <ul className="nav-links">
-
         <input type="checkbox" id="checkbox_toggle" />
-        <label for="checkbox_toggle" className="hamburger">&#9776;</label>
+        <label for="checkbox_toggle" className="hamburger">
+          &#9776;
+        </label>
 
         <div className="menu">
-
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/about">About Us</Link></li>
-          <li><Link to="/subscriptions">Subscriptions</Link></li>
-        
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          {/* <li>
+            <Link to="/about">About Us</Link>
+          </li> */}
+          {/* <li>
+            <Link to="/subscriptions">Subscriptions</Link>
+          </li> */}
 
           {/* <li className="services">
             <a to="/">Services</a>
@@ -40,4 +52,4 @@ function Header() {
   );
 }
 
-export default Header
+export default Header;

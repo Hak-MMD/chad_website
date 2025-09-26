@@ -1,10 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap");
 body {
   background-color: #fff; /* Set background color to white */
   color: #000; /* Set text color to black */
-  font-family: 'Prompt', sans-serif;
+  /* font-family: "Prompt", sans-serif; */
+  font-family: monospace, sans-serif;
   margin: 0;
+  /* background: #fff;
+  background-image: radial-gradient(#000 1.2px, transparent 0);
+  background-size: 30px 30px;
+  background-position: -19px -19px; */
 }
-
-
-
+.bg-white {
+  background: white;
+}

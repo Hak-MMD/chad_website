@@ -5,7 +5,7 @@
 }
 
 body {
-  font-family: 'Prompt';
+  font-family: monospace, sans-serif;
 }
 
 a {
@@ -36,7 +36,7 @@ li {
 /* LOGO */
 .logo {
   font-size: 32px;
-  font-weight: 500;
+  font-weight: 400;
 }
 
 /* NAVBAR MENU */
@@ -58,7 +58,7 @@ li {
 
 /* DROPDOWN MENU */
 .services {
-  position: relative; 
+  position: relative;
 }
 
 .dropdown {
@@ -87,9 +87,9 @@ li {
 .services:hover .dropdown {
   display: block;
 }
-input[type=checkbox] {
+input[type="checkbox"] {
   display: none;
-} 
+}
 
 /* HAMBURGER MENU */
 .hamburger {
@@ -100,8 +100,8 @@ input[type=checkbox] {
 
 /* APPLYING MEDIA QUERIES */
 @media (max-width: 768px) {
- .menu {
-    display:none;
+  .menu {
+    display: none;
     position: absolute;
     background-color: #f9f9f9;
     right: 0;
@@ -109,6 +109,7 @@ input[type=checkbox] {
     text-align: left;
     padding: 16px 30px;
     z-index: 5;
+    margin-top: 30px;
   }
 
   .logo {
@@ -126,7 +127,7 @@ input[type=checkbox] {
     margin-top: 12px;
   }
 
-  input[type=checkbox]:checked ~ .menu {
+  input[type="checkbox"]:checked ~ .menu {
     display: block;
   }
 
