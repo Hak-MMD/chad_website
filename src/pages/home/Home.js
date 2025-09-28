@@ -49,7 +49,7 @@ function Home() {
   const getWaitlist = async () => {
     try {
       await axios
-        .get("http://localhost:3001/api/v1/web/getWaitlist")
+        .get("https://chad-server.onrender.com/api/v1/web/getWaitlist")
         .then((response) => {
           if (response?.data?.reply) {
             setWaitlist(response?.data?.reply);
@@ -80,7 +80,9 @@ function Home() {
         }, 4000);
       }
       await axios
-        .post("http://localhost:3001/api/v1/web/addToWaitlist", { email })
+        .post("https://chad-server.onrender.com/api/v1/web/addToWaitlist", {
+          email,
+        })
         .then((response) => {
           if (response?.data?.reply) {
             setWaitlist(waitlist + 1);
