@@ -197,9 +197,9 @@ We may update the Privacy Policy periodically. Users will be notified of any sig
           data, please contact us at:
         </p>
         <p>
-          <strong>chadai.support@gmail.com</strong>
+          <strong>chadai.app@gmail.com</strong>
           <br />
-          <strong>https://chadai.com</strong>
+          <strong>https://chad-ai-nd2k.onrender.com</strong>
         </p>
       </div>
 
