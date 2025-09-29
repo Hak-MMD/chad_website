@@ -9,7 +9,7 @@ function Header() {
         <img
           src={require("../../pages/images/icon.png")}
           alt="logo icon"
-          style={{ width: "83px", objectFit: "contain" }}
+          style={{ marginRight: "15px", width: "60px", objectFit: "contain" }}
         />
         <Link style={{ color: "black" }} to="/">
           ChadAI
