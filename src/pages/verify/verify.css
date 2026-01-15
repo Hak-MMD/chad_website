@@ -1,0 +1,94 @@
+/* --- Page Wrapper --- */
+.verify-wrapper {
+  min-height: 70vh;
+  background: #f7f7f7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+/* --- Card --- */
+.verify-card {
+  width: 100%;
+  max-width: 420px;
+  background: #fff;
+  padding: 40px 36px;
+  border-radius: 16px;
+  border: 1px solid #e5e5e5;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  text-align: center;
+}
+
+/* --- Titles --- */
+.verify-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #111;
+}
+
+.verify-subtitle {
+  margin-top: 6px;
+  font-size: 16px;
+  color: #555;
+}
+
+/* --- Code Inputs --- */
+.code-inputs {
+  display: flex;
+  justify-content: space-between;
+  margin: 30px 0;
+}
+
+.code-inputs input {
+  width: 48px;
+  height: 58px;
+  text-align: center;
+  font-size: 22px;
+  font-weight: 600;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  transition: 0.25s ease;
+  background: #fff;
+}
+
+.code-inputs input:focus {
+  border-color: #111;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Verify Button --- */
+.verify-btn {
+  width: 100%;
+  padding: 14px 0;
+  border-radius: 10px;
+  background: #111;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.verify-btn:hover {
+  background: #333;
+}
+
+/* --- Footer --- */
+.verify-footer {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #555;
+}
+
+.verify-footer a {
+  color: #111;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.verify-footer a:hover {
+  text-decoration: underline;
+}

@@ -1,53 +1,71 @@
-import React, { useState } from "react";
+import React from "react";
 import "./header.css";
 import { Link } from "react-router-dom";
 
-function Header() {
+function Header({ isSignedIn = false, userAvatar }) {
   return (
-    <nav className="navbar">
-      <div className="logo" style={{ display: "flex", alignItems: "center" }}>
-        <img
-          src={require("../../pages/images/icon.png")}
-          alt="logo icon"
-          style={{ marginRight: "15px", width: "60px", objectFit: "contain" }}
-        />
-        <Link style={{ color: "black" }} to="/">
-          ChadAI
-        </Link>
-      </div>
+    <nav className="header">
+      <div className="header-container">
+        {/* Logo */}
+        <div className="header-logo">
+          <img
+            src={require("../../pages/images/icon.png")}
+            alt="logo"
+            className="logo-img"
+          />
+          <Link to="/" className="logo-text">
+            ChadAI
+          </Link>
+        </div>
 
-      <ul className="nav-links">
-        <input type="checkbox" id="checkbox_toggle" />
-        <label for="checkbox_toggle" className="hamburger">
+        {/* Mobile toggle */}
+        <input type="checkbox" id="nav-toggle" className="nav-toggle" />
+        <label htmlFor="nav-toggle" className="hamburger">
           &#9776;
         </label>
 
-        <div className="menu">
+        {/* Menu */}
+        <ul className="header-menu">
           <li>
             <Link to="/">Home</Link>
           </li>
-          {/* <li>
+          <li>
             <Link to="/about">About Us</Link>
-          </li> */}
-          {/* <li>
-            <Link to="/subscriptions">Subscriptions</Link>
-          </li> */}
+          </li>
+          <li>
+            <Link to="/plans">Pricing</Link>
+          </li>
 
-          {/* <li className="services">
-            <a to="/">Services</a>
+          {!isSignedIn ? (
+            <>
+              <li className="header-btn sign-in">
+                <Link to="/signin">Sign In</Link>
+              </li>
+              <li className="header-btn try-free">
+                <Link to="/signup">Try for Free</Link>
+              </li>
+            </>
+          ) : (
+            <li className="user-avatar-wrapper">
+              <img
+                src={userAvatar || "https://i.pravatar.cc/150"}
+                alt="user avatar"
+                className="user-avatar"
+              />
 
-            <ul className="dropdown">
-              <li><a to="/">Dropdown 1 </a></li>
-              <li><a to="/">Dropdown 2</a></li>
-              <li><a to="/">Dropdown 2</a></li>
-              <li><a to="/">Dropdown 3</a></li>
-              <li><a to="/">Dropdown 4</a></li>
-            </ul>
-
-          </li> */}
-          {/* <li><Link to="/policy">Policy</Link></li> */}
-        </div>
-      </ul>
+              {/* Dropdown */}
+              <div className="avatar-dropdown">
+                <Link to="/dashboard">Dashboard</Link>
+                <Link to="/profile">Profile</Link>
+                <Link to="/settings">Settings</Link>
+                <Link to="/logout" className="logout">
+                  Log Out
+                </Link>
+              </div>
+            </li>
+          )}
+        </ul>
+      </div>
     </nav>
   );
 }

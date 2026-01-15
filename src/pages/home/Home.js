@@ -138,7 +138,7 @@ function Home() {
 
   return (
     <>
-      <Header />
+      <Header isSignedIn={false} />
 
       <section className="hero-block">
         <h1 className="bg-white hero-title">Your AI, right inside Chrome</h1>
