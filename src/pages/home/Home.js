@@ -261,9 +261,9 @@ function Home() {
             </p>
             <div className="project-visual">
               <div className="arrow-wrapper">
-                <div className="custom-arrow custom-prev" onClick={goPrev}>
+                {/* <div className="custom-arrow custom-prev" onClick={goPrev}>
                   &#10094;
-                </div>
+                </div> */}
                 <div className="visual-slider">
                   <div
                     className="visual-slide"
@@ -280,9 +280,9 @@ function Home() {
                     ))}
                   </div>
                 </div>
-                <div className="custom-arrow custom-next" onClick={goNext}>
+                {/* <div className="custom-arrow custom-next" onClick={goNext}>
                   &#10095;
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
