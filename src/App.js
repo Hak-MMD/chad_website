@@ -8,6 +8,9 @@ import Error from "./pages/error/Error";
 import SignIn from "./pages/login/Signin";
 import SignUp from "./pages/register/Signup";
 import VerifyEmail from "./pages/verify/verifyEmail";
+import Profile from "./pages/profile/Profile";
+import Subscriptions from "./pages/subscriptions/Subscriptions";
+import Dashboard from "./pages/dashboard/Dashboard";
 
 function App() {
   return (
@@ -20,6 +23,10 @@ function App() {
         <Route path="/verify-email" element={<VerifyEmail />} />
         <Route path="/plans" element={<Products />} />
         <Route path="/policy" element={<Policy />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/subscriptions" element={<Subscriptions />} />
+
         <Route path="*" element={<Error />} />
       </Routes>
     </BrowserRouter>

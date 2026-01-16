@@ -57,7 +57,8 @@ function Header({ isSignedIn = false, userAvatar }) {
               <div className="avatar-dropdown">
                 <Link to="/dashboard">Dashboard</Link>
                 <Link to="/profile">Profile</Link>
-                <Link to="/settings">Settings</Link>
+                <Link to="/subscriptions">Subscriptions</Link>
+                {/* <Link to="/settings">Settings</Link> */}
                 <Link to="/logout" className="logout">
                   Log Out
                 </Link>

@@ -21,14 +21,17 @@ function Products() {
           <div className="pricing-card">
             <h2 className="plan-name">Starter</h2>
             <p className="plan-price">
-              $19<span>/month</span>
+              Free<span></span>
             </p>
-            <p className="plan-desc">Perfect for individuals</p>
+            <p className="plan-desc">Best to try the product</p>
 
             <ul className="plan-features">
-              <li>Basic features</li>
-              <li>Email support</li>
-              <li>Access to dashboard</li>
+              <li>- 5+ requests per day</li>
+              <li>- 100+ requests per month</li>
+              <li>- Basic AI model</li>
+              <li>- Average response times</li>
+              <li>- Email support</li>
+              <li>- Access to dashboard</li>
             </ul>
 
             <button className="plan-btn">Choose Plan</button>
@@ -40,15 +43,17 @@ function Products() {
 
             <h2 className="plan-name">Pro</h2>
             <p className="plan-price">
-              $49<span>/month</span>
+              $3.75<span>/month</span>
             </p>
-            <p className="plan-desc">Best for growing teams</p>
+            <p className="plan-desc">Perfect for individuals</p>
 
             <ul className="plan-features">
-              <li>Everything in Starter</li>
-              <li>Priority support</li>
-              <li>Advanced analytics</li>
-              <li>Team collaboration tools</li>
+              <li>- 100+ requests per day</li>
+              <li>- 3000+ requests per month</li>
+              <li>- Enhanced AI model</li>
+              <li>- Fast response times</li>
+              <li>- Priority support</li>
+              <li>- Advanced analytics</li>
             </ul>
 
             <button className="plan-btn featured-btn">Choose Plan</button>
@@ -58,14 +63,18 @@ function Products() {
           <div className="pricing-card">
             <h2 className="plan-name">Enterprise</h2>
             <p className="plan-price">
-              $99<span>/month</span>
+              $9.75<span>/month</span>
             </p>
-            <p className="plan-desc">For large organizations</p>
+            <p className="plan-desc">Best for growing teams</p>
 
             <ul className="plan-features">
-              <li>Unlimited access</li>
-              <li>Dedicated support</li>
-              <li>Custom integrations</li>
+              <li>- 500+ requests per day</li>
+              <li>- 10000+ requests per month</li>
+              <li>- Enhanced AI model</li>
+              <li>- Fast response times</li>
+              <li>- Dedicated support</li>
+              <li>- Advanced analytics</li>
+              <li>- Team collaboration tools</li>
             </ul>
 
             <button className="plan-btn">Choose Plan</button>
