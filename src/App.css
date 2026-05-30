@@ -1,15 +1,51 @@
-@import url("https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body {
-  background-color: #fff; /* Set background color to white */
-  color: #000; /* Set text color to black */
-  /* font-family: "Prompt", sans-serif; */
+  background-color: #fff;
+  color: #000;
   font-family: monospace, sans-serif;
   margin: 0;
-  /* background: #fff;
-  background-image: radial-gradient(#000 1.2px, transparent 0);
-  background-size: 30px 30px;
-  background-position: -19px -19px; */
 }
+
 .bg-white {
   background: white;
+}
+
+.auth-error {
+  color: #dc2626;
+  font-size: 0.875rem;
+  margin: 8px 0;
+  text-align: center;
+}
+
+.auth-success {
+  color: #16a34a;
+  font-size: 0.875rem;
+  margin: 8px 0;
+  text-align: center;
+}
+
+.link-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+/* Skeleton loader */
+.skeleton-box {
+  background: linear-gradient(90deg, #e2e8f0 25%, #f1f5f9 50%, #e2e8f0 75%);
+  background-size: 200% 100%;
+  border-radius: 4px;
+  animation: skeleton-shimmer 1.4s ease-in-out infinite;
+}
+
+@keyframes skeleton-shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
 }

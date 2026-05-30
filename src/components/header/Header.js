@@ -1,18 +1,24 @@
 import React from "react";
 import "./header.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
+import logoImg from "../../pages/images/icon.png";
 
-function Header({ isSignedIn = false, userAvatar }) {
+function Header() {
+  const { user, logout } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    await logout();
+    navigate("/");
+  };
+
   return (
     <nav className="header">
       <div className="header-container">
         {/* Logo */}
         <div className="header-logo">
-          <img
-            src={require("../../pages/images/icon.png")}
-            alt="logo"
-            className="logo-img"
-          />
+          <img src={logoImg} alt="logo" className="logo-img" />
           <Link to="/" className="logo-text">
             ChadAI
           </Link>
@@ -36,7 +42,7 @@ function Header({ isSignedIn = false, userAvatar }) {
             <Link to="/plans">Pricing</Link>
           </li>
 
-          {!isSignedIn ? (
+          {!user ? (
             <>
               <li className="header-btn sign-in">
                 <Link to="/signin">Sign In</Link>
@@ -48,20 +54,17 @@ function Header({ isSignedIn = false, userAvatar }) {
           ) : (
             <li className="user-avatar-wrapper">
               <img
-                src={userAvatar || "https://i.pravatar.cc/150"}
+                src={user.avatar || "https://i.pravatar.cc/150"}
                 alt="user avatar"
                 className="user-avatar"
               />
-
-              {/* Dropdown */}
               <div className="avatar-dropdown">
                 <Link to="/dashboard">Dashboard</Link>
                 <Link to="/profile">Profile</Link>
                 <Link to="/subscriptions">Subscriptions</Link>
-                {/* <Link to="/settings">Settings</Link> */}
-                <Link to="/logout" className="logout">
+                <button onClick={handleLogout} className="logout">
                   Log Out
-                </Link>
+                </button>
               </div>
             </li>
           )}

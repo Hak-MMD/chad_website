@@ -2,26 +2,23 @@ import { useState, useEffect, useRef } from "react";
 import Header from "../../components/header/Header";
 import "./home.css";
 import Footer from "../../components/footer/Footer";
-// import mainImg from "../images/headerlgr.png";
 import text_img from "../images/text_img.png";
 import image_img from "../images/image_chad.png";
 import reply_img from "../images/reply_chad.png";
+import person1 from "../images/person1.jpg";
+import person2 from "../images/person2.jpeg";
+import person3 from "../images/person3.jpg";
 import { Link } from "react-router-dom";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import FeedbackCard from "../../components/card/FeedbackCard";
 import "../../components/card/feedback.css";
-import { FaAngleLeft } from "react-icons/fa";
-import { FaAngleRight } from "react-icons/fa";
 import { CiCreditCardOff } from "react-icons/ci";
-import { HiOutlineMail } from "react-icons/hi";
 import { IoChatbubbleEllipsesOutline } from "react-icons/io5";
 import { FiImage } from "react-icons/fi";
 import { IoIosFlash } from "react-icons/io";
 import { FiChrome } from "react-icons/fi";
-import { use } from "react";
 import axios from "axios";
+
+const API_URL = import.meta.env.VITE_API_URL;
 
 const images = [text_img, image_img, reply_img];
 
@@ -49,7 +46,7 @@ function Home() {
   const getWaitlist = async () => {
     try {
       await axios
-        .get("https://chad-server.onrender.com/api/v1/web/getWaitlist")
+        .get(`${API_URL}/api/v1/web/getWaitlist`)
         .then((response) => {
           if (response?.data?.reply) {
             setWaitlist(response?.data?.reply);
@@ -80,7 +77,7 @@ function Home() {
         }, 4000);
       }
       await axios
-        .post("https://chad-server.onrender.com/api/v1/web/addToWaitlist", {
+        .post(`${API_URL}/api/v1/web/addToWaitlist`, {
           email,
         })
         .then((response) => {
@@ -138,7 +135,7 @@ function Home() {
 
   return (
     <>
-      <Header isSignedIn={false} />
+      <Header />
 
       <section className="hero-block">
         <h1 className="bg-white hero-title">Your AI, right inside Chrome</h1>
@@ -186,9 +183,9 @@ function Home() {
 
           <div className="joined-stats">
             <div className="avatars">
-              <img src={require("../images/person1.jpg")} alt="a1" />
-              <img src={require("../images/person2.jpeg")} alt="a2" />
-              <img src={require("../images/person3.jpg")} alt="a3" />
+              <img src={person1} alt="a1" />
+              <img src={person2} alt="a2" />
+              <img src={person3} alt="a3" />
             </div>
             <div className="signed-count">{waitlist} people signed up</div>
           </div>
@@ -329,9 +326,9 @@ function Home() {
 
             <div className="joined-stats">
               <div className="avatars">
-                <img src={require("../images/person1.jpg")} alt="a1" />
-                <img src={require("../images/person2.jpeg")} alt="a2" />
-                <img src={require("../images/person3.jpg")} alt="a3" />
+                <img src={person1} alt="a1" />
+                <img src={person2} alt="a2" />
+                <img src={person3} alt="a3" />
               </div>
               <div className="signed-count">{waitlist} people signed up</div>
             </div>

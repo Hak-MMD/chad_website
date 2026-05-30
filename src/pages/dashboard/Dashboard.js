@@ -1,121 +1,127 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
 import "./dashboard.css";
+import { useAuth } from "../../context/AuthContext";
+import api from "../../api/axios";
+import { Link } from "react-router-dom";
+
+const PLAN_LABELS = {
+  free: "Free",
+  basic: "Basic",
+  pro: "Pro",
+  unlimited: "Unlimited",
+};
+
+const PLAN_PRICES = {
+  free: "Free",
+  basic: "$4.25 / month",
+  pro: "$6.75 / month",
+  unlimited: "$17.76 / month",
+};
+
+function DashboardSkeleton() {
+  return (
+    <>
+      <div className="dash-grid">
+        {[1, 2].map((i) => (
+          <div key={i} className="dash-card">
+            <div className="skeleton-box" style={{ height: "1rem", width: "55%", marginBottom: "14px" }} />
+            <div className="skeleton-box" style={{ height: "2rem", width: "40%", marginBottom: "10px" }} />
+            <div className="skeleton-box" style={{ height: "0.75rem", width: "75%" }} />
+          </div>
+        ))}
+      </div>
+      <div className="sub-card">
+        <div className="skeleton-box" style={{ height: "1.25rem", width: "35%", marginBottom: "20px" }} />
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+          <div>
+            <div className="skeleton-box" style={{ height: "1.5rem", width: "120px", marginBottom: "10px" }} />
+            <div className="skeleton-box" style={{ height: "1rem", width: "90px" }} />
+          </div>
+          <div className="skeleton-box" style={{ height: "38px", width: "110px", borderRadius: "8px" }} />
+        </div>
+      </div>
+    </>
+  );
+}
 
 function Dashboard() {
-  // Example data (replace with real API data)
-  const usage = {
-    dailyUsed: 42,
-    dailyLimit: 100,
-    monthlyUsed: 320,
-    monthlyLimit: 1000,
-    costUSD: 12.84,
-    breakdown: {
-      chat: 210,
-      image: 60,
-      analysis: 50,
-    },
-    source: {
-      extension: 240,
-      website: 80,
-    },
-  };
+  const { user } = useAuth();
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    api
+      .get("/api/v2/auth/me")
+      .then((res) => setData(res.data))
+      .catch(() => setError("Failed to load dashboard data."))
+      .finally(() => setLoading(false));
+  }, []);
+
+  const planKey = user?.plan || "free";
+  const planName = PLAN_LABELS[planKey];
+  const planPrice = PLAN_PRICES[planKey];
+  const usage = data?.usage;
 
   return (
     <>
-      <Header isSignedIn={true} />
+      <Header />
 
       <section className="dash-section">
         <div className="dash-container">
-          {/* Page Header */}
           <h1 className="dash-title">Dashboard</h1>
-          <p className="dash-subtitle">Your usage, limits, and cost overview</p>
+          <p className="dash-subtitle">Your usage and plan overview</p>
 
-          {/* Stats Grid */}
-          <div className="dash-grid">
-            {/* Daily Usage */}
-            <div className="dash-card">
-              <h3>Daily Usage</h3>
-              <p className="dash-number">
-                {usage.dailyUsed} / {usage.dailyLimit}
-              </p>
-              <p className="dash-label">
-                {usage.dailyLimit - usage.dailyUsed} requests left today
-              </p>
-            </div>
+          {error && <p className="auth-error">{error}</p>}
 
-            {/* Monthly Usage */}
-            <div className="dash-card">
-              <h3>Monthly Usage</h3>
-              <p className="dash-number">
-                {usage.monthlyUsed} / {usage.monthlyLimit}
-              </p>
-              <p className="dash-label">
-                {usage.monthlyLimit - usage.monthlyUsed} requests left this
-                month
-              </p>
-            </div>
+          {loading ? (
+            <DashboardSkeleton />
+          ) : (
+            !error &&
+            usage && (
+              <>
+                <div className="dash-grid">
+                  <div className="dash-card">
+                    <h3>Daily Usage</h3>
+                    <p className="dash-number">
+                      {usage.dailyUsed} / {usage.dailyLimit}
+                    </p>
+                    <p className="dash-label">
+                      {usage.dailyLimit - usage.dailyUsed} requests left today
+                    </p>
+                  </div>
 
-            {/* Cost */}
-            <div className="dash-card">
-              <h3>Total Cost</h3>
-              <p className="dash-number">${usage.costUSD.toFixed(2)}</p>
-              <p className="dash-label">USD spent on API usage</p>
-            </div>
-          </div>
-          {/* Current Plan Card */}
-          <div className="sub-card">
-            <h2 className="sub-card-title">Current Plan</h2>
+                  <div className="dash-card">
+                    <h3>Monthly Usage</h3>
+                    <p className="dash-number">
+                      {usage.monthlyUsed} / {usage.monthlyLimit}
+                    </p>
+                    <p className="dash-label">
+                      {usage.monthlyLimit - usage.monthlyUsed} requests left
+                      this month
+                    </p>
+                  </div>
+                </div>
 
-            <div className="sub-plan-info">
-              <div>
-                <h3 className="plan-name">Pro Monthly</h3>
-                <p className="plan-price">$3.75 / month</p>
-                <p className="plan-renew">
-                  Renews on: <strong>Feb 15, 2026</strong>
-                </p>
-              </div>
-
-              <button className="sub-btn upgrade-btn">Upgrade</button>
-            </div>
-          </div>
-
-          {/* Breakdown Section */}
-          <div className="dash-card wide">
-            <h3>Usage Breakdown</h3>
-
-            <div className="breakdown-grid">
-              <div className="breakdown-item">
-                <span>Chat Requests</span>
-                <strong>{usage.breakdown.chat}</strong>
-              </div>
-              <div className="breakdown-item">
-                <span>Image Requests</span>
-                <strong>{usage.breakdown.image}</strong>
-              </div>
-              <div className="breakdown-item">
-                <span>Analysis Requests</span>
-                <strong>{usage.breakdown.analysis}</strong>
-              </div>
-            </div>
-          </div>
-
-          {/* Source Breakdown */}
-          <div className="dash-card wide">
-            <h3>Source Breakdown</h3>
-
-            <div className="breakdown-grid">
-              <div className="breakdown-item">
-                <span>Chrome Extension</span>
-                <strong>{usage.source.extension}</strong>
-              </div>
-              <div className="breakdown-item">
-                <span>Website</span>
-                <strong>{usage.source.website}</strong>
-              </div>
-            </div>
-          </div>
+                <div className="sub-card">
+                  <h2 className="sub-card-title">Current Plan</h2>
+                  <div className="sub-plan-info">
+                    <div>
+                      <h3 className="plan-name">{planName}</h3>
+                      <p className="plan-price">{planPrice}</p>
+                    </div>
+                    <Link to="/subscriptions">
+                      <button className="sub-btn upgrade-btn">
+                        Manage Plan
+                      </button>
+                    </Link>
+                  </div>
+                </div>
+              </>
+            )
+          )}
         </div>
       </section>
 

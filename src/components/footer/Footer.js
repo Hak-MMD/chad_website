@@ -3,6 +3,7 @@ import "./footer.css";
 import { FaInstagram, FaTiktok } from "react-icons/fa";
 import { FiMail } from "react-icons/fi";
 import { Link } from "react-router-dom";
+import logoImg from "../../pages/images/icon.png";
 
 function Footer() {
   return (
@@ -11,11 +12,7 @@ function Footer() {
         {/* Brand */}
         <div className="footer-brand-block">
           <div className="footer-logo-wrap">
-            <img
-              src={require("../../pages/images/icon.png")}
-              alt="logo"
-              className="footer-logo"
-            />
+            <img src={logoImg} alt="logo" className="footer-logo" />
             <span className="footer-brand">ChadAI</span>
           </div>
           <p className="footer-tagline">Smart tools for smarter decisions.</p>
@@ -42,14 +39,14 @@ function Footer() {
           <h4>Connect</h4>
           <div className="footer-socials">
             <a
-              href="mailto:betboost@gmail.com"
+              href="mailto:chadai.support@gmail.com"
               target="_blank"
               rel="noreferrer"
             >
               <FiMail />
             </a>
             <a
-              href="https://www.instagram.com/_betboost?igsh=OXk0cHVjdTF1d3Jw"
+              href="https://www.instagram.com/chadai"
               target="_blank"
               rel="noreferrer"
             >
