@@ -3,6 +3,7 @@ import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
 import "./profile.css";
 import api from "../../api/axios";
+import { useToast } from "../../context/ToastContext";
 
 const PLAN_LABELS = {
   free: "Free",
@@ -39,17 +40,21 @@ function ProfileSkeleton() {
 }
 
 function Profile() {
+  const { showToast } = useToast();
   const [profile, setProfile] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     api
       .get("/api/v2/auth/me")
       .then((res) => setProfile(res.data.user))
-      .catch(() => setError("Failed to load profile."))
+      .catch(() => {
+        setError(true);
+        showToast("Failed to load profile. Please refresh.", "error");
+      })
       .finally(() => setLoading(false));
-  }, []);
+  }, [showToast]);
 
   const memberSince = profile?.createdAt
     ? new Date(profile.createdAt).toLocaleDateString("en-US", {
@@ -66,8 +71,6 @@ function Profile() {
         <div className="profile-container">
           <h1 className="profile-title">Your Profile</h1>
           <p className="profile-subtitle">Manage your account information</p>
-
-          {error && <p className="auth-error">{error}</p>}
 
           {loading ? (
             <ProfileSkeleton />

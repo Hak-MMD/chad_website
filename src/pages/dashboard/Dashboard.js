@@ -3,6 +3,7 @@ import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
 import "./dashboard.css";
 import { useAuth } from "../../context/AuthContext";
+import { useToast } from "../../context/ToastContext";
 import api from "../../api/axios";
 import { Link } from "react-router-dom";
 
@@ -48,17 +49,21 @@ function DashboardSkeleton() {
 
 function Dashboard() {
   const { user } = useAuth();
+  const { showToast } = useToast();
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     api
       .get("/api/v2/auth/me")
       .then((res) => setData(res.data))
-      .catch(() => setError("Failed to load dashboard data."))
+      .catch(() => {
+        setError(true);
+        showToast("Failed to load dashboard data. Please refresh.", "error");
+      })
       .finally(() => setLoading(false));
-  }, []);
+  }, [showToast]);
 
   const planKey = user?.plan || "free";
   const planName = PLAN_LABELS[planKey];
@@ -73,8 +78,6 @@ function Dashboard() {
         <div className="dash-container">
           <h1 className="dash-title">Dashboard</h1>
           <p className="dash-subtitle">Your usage and plan overview</p>
-
-          {error && <p className="auth-error">{error}</p>}
 
           {loading ? (
             <DashboardSkeleton />
